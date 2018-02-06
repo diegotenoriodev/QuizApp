@@ -1,0 +1,6 @@
+<div class="answer-desc">
+    Choose:
+</div>
+<div class="answer-options">
+    <mat-checkbox *ngFor="let option of options;" [(ngModel)]="option.checked">{{option.name}}</mat-checkbox>
+</div>

@@ -1,0 +1,29 @@
+<table class="grid">
+    <thead>
+        <td>
+            <input [(ngModel)]="checkAllMarked" type="checkbox" title="add this user">
+        </td>
+        <td>
+            Username
+        </td>
+        <td>
+            Status
+        </td>
+    </thead>
+    <tbody>
+
+        <tr *ngFor="let user of getUsers()">
+            <td class="col-10">
+                <input type="checkbox" [(ngModel)]="user.isMarked" title="add this user">
+            </td>
+
+            <td class="col-30">
+                {{user.username}}
+            </td>
+
+            <td class="col-60">
+                {{getStatus(user)}}
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,17 @@
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\bin\Release\netcoreapp2.0\QuizAPI.Repository.deps.json
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\bin\Release\netcoreapp2.0\QuizAPI.Repository.dll
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\bin\Release\netcoreapp2.0\QuizAPI.Repository.pdb
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\bin\Release\netcoreapp2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\bin\Release\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\bin\Release\netcoreapp2.0\QuizAPI.Domain.dll
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\bin\Release\netcoreapp2.0\Newtonsoft.Json.dll
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\bin\Release\netcoreapp2.0\QuizAPI.Domain.pdb
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\bin\Release\netcoreapp2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\bin\Release\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.xml
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\bin\Release\netcoreapp2.0\Newtonsoft.Json.xml
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\obj\Release\netcoreapp2.0\QuizAPI.Repository.csprojResolveAssemblyReference.cache
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\obj\Release\netcoreapp2.0\QuizAPI.Repository.csproj.CoreCompileInputs.cache
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\obj\Release\netcoreapp2.0\QuizAPI.Repository.AssemblyInfoInputs.cache
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\obj\Release\netcoreapp2.0\QuizAPI.Repository.AssemblyInfo.cs
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\obj\Release\netcoreapp2.0\QuizAPI.Repository.dll
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Repository\obj\Release\netcoreapp2.0\QuizAPI.Repository.pdb

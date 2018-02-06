@@ -1,0 +1,13 @@
+<header>
+    <img class="logo" src="http://diegotenorio.com/Images/logo.png">
+</header>
+<div class="main-content">
+    <div class="login-control col-50">
+        <div class="div-login full-width {{getClassLogin()}}">
+            <app-login (newUserClickEvent)="newUserClick()"></app-login>
+        </div>
+        <div class="div-reg full-width {{getClassRegister()}}">
+            <app-register (loginClick)="newUserClick()"></app-register>
+        </div>
+    </div>
+</div>

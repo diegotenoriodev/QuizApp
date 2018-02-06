@@ -1,0 +1,49 @@
+<div>
+    <mat-card class="grid-page">
+        <mat-card-title>New Quizes</mat-card-title>
+        <mat-card-content>
+            <div class="group-cards">
+                <div class="div-card" *ngFor="let quizAnswer of getNewQuizzes()">
+                    <mat-card class="card">
+                        <mat-card-title>{{quizAnswer.quiz.name}}</mat-card-title>
+                        <mat-card-content class="card-content">{{quizAnswer.quiz.description}}</mat-card-content>
+                        <mat-card-actions class="right">
+                            <button mat-button class="btn-action" [routerLink]="['/user/quizes', quizAnswer.id]">Start Quiz &nbsp;&gt;&gt;</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="grid-page">
+        <mat-card-title>Quizzes in Progress</mat-card-title>
+        <mat-card-content>
+            <div class="group-cards">
+                <div class="div-card" *ngFor="let quizAnswer of getInProgressQuizzes()">
+                    <mat-card class="card">
+                        <mat-card-title>{{quizAnswer.quiz.name}}</mat-card-title>
+                        <mat-card-content class="card-content">{{quizAnswer.quiz.description}}</mat-card-content>
+                        <mat-card-actions class="right">
+                            <button mat-button class="btn-action" [routerLink]="['/user/quizes', quizAnswer.id]">Continue &nbsp;&gt;&gt;</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="grid-page">
+        <mat-card-title>Past Quizzes</mat-card-title>
+        <mat-card-content>
+            <div class="group-cards">
+                <div class="div-card" *ngFor="let quizAnswer of getCompleteQuizzes()">
+                    <mat-card class="card">
+                        <mat-card-title>{{quizAnswer.quiz.name}}</mat-card-title>
+                        <mat-card-content class="card-content">{{quizAnswer.quiz.description}}</mat-card-content>
+                        <mat-card-actions class="right">
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

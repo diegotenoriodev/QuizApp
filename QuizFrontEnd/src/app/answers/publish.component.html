@@ -1,0 +1,39 @@
+<div>
+    <form>
+        <mat-card class="grid-page">
+            <mat-card-title>
+                {{getQuiz().name}} - Publishing settings
+            </mat-card-title>
+            <mat-card-content>
+                <div class="description">
+                    {{getQuiz().description}}
+                </div>
+                <mat-form-field class="full-width">
+                    <mat-select [(value)]="getPublicationInfo().access" (change)="changeAccess($event.value)" placeholder="Access - Who can answer your quiz">
+                        <mat-option [value]="null">-- Select --</mat-option>
+                        <mat-option [value]="1">Public - All users with the url can access</mat-option>
+                        <mat-option [value]="2">Private - Only specified users can access</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="showURL()">
+                    <input disabled="disabled" [(value)]="getPublicationInfo().url" placeholder="Public URL" name="url" matInput>
+                </mat-form-field>
+                <answer-host></answer-host>
+                <mat-form-field class="full-width">
+                    <input matInput [(ngModel)]="getPublicationInfo().expirationDate" name="expirationDate" [matDatepicker]="picker" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <app-errors class="{{getErrors().length === 0 ? 'hidden' : ''}}" [errors]="getErrors()"></app-errors>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="action-control">
+                    <button mat-button class="btn-action" (click)="save()">Save</button>
+                    <button mat-button class="btn-action btn-warn" routerLink='/quizes'>Cancel</button>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>
+<app-loading [isLoading]="getLoading()">
+</app-loading>

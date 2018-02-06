@@ -1,0 +1,46 @@
+<div>
+    <mat-card class="grid-page">
+        <mat-card-title>My Quizes - Answers</mat-card-title>
+        <mat-card-content>
+            <div>
+                <mat-form-field class="full-width">
+                    <mat-select [(value)]="quiz" (change)="change($event.value.id)" placeholder="Select the quiz">
+                        <mat-option [value]="null">-- Select --</mat-option>
+
+                        <mat-option *ngFor="let item of getQuizes();" [value]="item">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <mat-table [dataSource]="datasource">
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell class="grid-actions-header" *matHeaderCellDef>Actions</mat-header-cell>
+                    <mat-cell *matCellDef="let quizUser" class="grid-actions">
+                        <a *ngIf="!quizUser.isOpen" [routerLink]="['/user/answers', quizUser.id]" title="edit this item">
+                            <img src="/assets/images/view.png" alt="edit">
+                        </a>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+                    <mat-cell *matCellDef="let quizUser">{{quizUser.name}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="answeredAt">
+                    <mat-header-cell *matHeaderCellDef>Answered At</mat-header-cell>
+                    <mat-cell *matCellDef="let quizUser">{{dateToStr(quizUser.answeredAt)}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="isOpen">
+                    <mat-header-cell *matHeaderCellDef>Is Finished By User</mat-header-cell>
+                    <mat-cell *matCellDef="let quizUser">{{boolToStr(!quizUser.isOpen)}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="evaluated">
+                    <mat-header-cell *matHeaderCellDef>Was Evaluated</mat-header-cell>
+                    <mat-cell *matCellDef="let quizUser">{{boolToStr(quizUser.evaluated)}}</mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            </mat-table>
+        </mat-card-content>
+    </mat-card>
+</div>

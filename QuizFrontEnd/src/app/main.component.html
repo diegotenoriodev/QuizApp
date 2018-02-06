@@ -1,0 +1,41 @@
+<div class="all" (click)="bodyClick()">
+    <header>
+        <div class="top-menu">
+            <nav class="topnav {{mainMenuResponsiveClass}}" id="myTopnav">
+                <a href="javascript:void(0);" class="icon" (click)="changeMenu()">&#9776;</a>
+                <a (click)="hideMenu()" routerLink='/quizes'>Quizes</a>
+                <a (click)="hideMenu()" routerLink='/questions'>Questions</a>
+                <a (click)="hideMenu()" routerLink='/user/answers'>Answers</a>
+            </nav>
+            <nav class="topnav-right">
+                <a href="javascript:void(0);" class="link-profile" (click)="changeProfileMenu()">
+                    <img class="profile-icon" src="/assets/images/profile.png" />
+                    <span class="menu-note" *ngIf="getTotal() > 0">{{getTotal()}}</span>
+                </a>
+                <div class="{{classProfileMenu}}">
+                    <div class="menu-group">
+                        <div class="menu-heading">Quiz Information</div>
+                        <a (click)="hideMenu()" title="{{getMessageOpenQuizes()}}" routerLink='/user/quizes'>
+                        My Answers
+                        <span class="menu-note" *ngIf="getQtdOpenQuizes() > 0">{{getQtdOpenQuizes()}}</span>
+                    </a>
+                        <a (click)="hideMenu()" title="{{getMessageClosedQuizes()}}" routerLink='/user/answers'>
+                        My Quizes
+                        <span class="menu-note" *ngIf="getQtdClosedQuizes() > 0">{{getQtdClosedQuizes()}}</span>
+                    </a>
+                    </div>
+                    <div class="menu-group">
+                        <div class="menu-heading">Account</div>
+                        <a (click)="hideMenu()" title="Click to change details about your account details" routerLink='/account'>
+                        Change Details
+                    </a>
+                        <a (click)="exit()" title="Click to exit" routerLink='/'>Exit</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div *ngIf="isAuthenticated()" class="main-content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

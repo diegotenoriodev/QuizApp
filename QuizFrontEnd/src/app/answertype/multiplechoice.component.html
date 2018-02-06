@@ -1,0 +1,9 @@
+<mat-form-field *ngFor="let option of options; let i = index" class="full-width">
+    <div class="right">
+        <mat-checkbox [(ngModel)]="options[i].isCorrect" title="Mark if this is one of the right answers"></mat-checkbox>
+        <a class="newitem-remove" title="Click to remove the option" (click)="removeOption(i)">X</a>
+    </div>
+    <textarea name="option{{i}}" matInput [(ngModel)]="options[i].content" placeholder="Option {{i+1}}"></textarea>
+</mat-form-field>
+
+<a class="newitem-add" (click)="addOption()">Add new</a>

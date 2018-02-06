@@ -1,0 +1,13 @@
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\bin\Release\netcoreapp2.0\QuizAPI.Domain.deps.json
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\bin\Release\netcoreapp2.0\QuizAPI.Domain.dll
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\bin\Release\netcoreapp2.0\QuizAPI.Domain.pdb
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\bin\Release\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\bin\Release\netcoreapp2.0\Newtonsoft.Json.dll
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\bin\Release\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.xml
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\bin\Release\netcoreapp2.0\Newtonsoft.Json.xml
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\obj\Release\netcoreapp2.0\QuizAPI.Domain.csprojResolveAssemblyReference.cache
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\obj\Release\netcoreapp2.0\QuizAPI.Domain.csproj.CoreCompileInputs.cache
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\obj\Release\netcoreapp2.0\QuizAPI.Domain.AssemblyInfoInputs.cache
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\obj\Release\netcoreapp2.0\QuizAPI.Domain.AssemblyInfo.cs
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\obj\Release\netcoreapp2.0\QuizAPI.Domain.dll
+C:\Users\diego\OneDrive\Career Path\Portfolio\QuizApp\QuizAPI\QuizAPI.Domain\obj\Release\netcoreapp2.0\QuizAPI.Domain.pdb

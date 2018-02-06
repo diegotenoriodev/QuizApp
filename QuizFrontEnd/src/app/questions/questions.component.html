@@ -1,0 +1,42 @@
+<app-question [question]="question" (actionExecuted)="editChanged($event)"></app-question>
+<div>
+    <mat-card class="grid-page">
+        <mat-card-title>Questions</mat-card-title>
+        <mat-card-actions>
+            <app-top [enableNew]="true" (newClickAction)="onNewClick()" (searchClickAction)="onSearchClick($event)"></app-top>
+            <app-errors class="{{getErrors().length === 0 ? 'hidden' : ''}}" [errors]="getErrors()"></app-errors>
+        </mat-card-actions>
+        <mat-card-content>
+            <div>
+                <mat-form-field class="full-width">
+                    <mat-select [(value)]="quiz" (change)="change($event.value.id)" placeholder="Select the quiz">
+                        <mat-option [value]="null">-- Select --</mat-option>
+
+                        <mat-option *ngFor="let item of getQuizes();" [value]="item">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <mat-table [dataSource]="datasource">
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                    <mat-cell *matCellDef="let question" class="grid-actions">
+                        <a (click)="edit(question)" title="edit this item">
+                            <img src="/assets/images/edit.png" alt="edit">
+                        </a>
+                        <a (click)="delete(question)" title="remove this item">
+                            <img src="assets/images/remove.png" alt="remove">
+                        </a>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                    <mat-cell *matCellDef="let question">{{question.description}}</mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            </mat-table>
+        </mat-card-content>
+    </mat-card>
+</div>

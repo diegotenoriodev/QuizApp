@@ -1,0 +1,26 @@
+<form>
+    <mat-card class="mat-form">
+        <mat-card-title>New User</mat-card-title>
+        <mat-card-content>
+            <mat-form-field class="full-width">
+                <input [(ngModel)]="getUser().username" name="username" matInput placeholder="Username ">
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input type="email" matInput #email [(ngModel)]="getUser().email" name="email" placeholder="Email">
+            </mat-form-field>
+            <mat-form-field class="full-width ">
+                <input type="password" matInput #password placeholder="Password" [(ngModel)]="getUser().password" name="password">
+            </mat-form-field>
+            <mat-form-field class="full-width ">
+                <input type="password" matInput #password placeholder="Confirm Password" [(ngModel)]="getUser().confirmPassword" name="ConfirmPassword">
+            </mat-form-field>
+            <app-errors class="{{getErrors().length === 0 ? 'hidden' : ''}}" [errors]="getErrors()"></app-errors>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button class="full-width" (click)="save()">Register</button>
+            <button mat-button class="full-width" (click)="onLoginClick()">Already a User? Login</button>
+        </mat-card-actions>
+    </mat-card>
+</form>
+<app-loading [isLoading]="getLoading()">
+</app-loading>

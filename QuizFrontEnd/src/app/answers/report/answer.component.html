@@ -1,0 +1,13 @@
+<mat-card class="col-60 center">
+    <mat-card-title>
+        Question {{getQuestionNumber()}}
+    </mat-card-title>
+    <mat-card-content class="question-description">
+        <div>
+            {{getQuestion().description}}
+        </div>
+        <div class="answers">
+            <answer-host></answer-host>
+        </div>
+    </mat-card-content>
+</mat-card>

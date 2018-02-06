@@ -1,0 +1,49 @@
+<app-quiz [quiz]="quiz" (actionExecuted)="editChanged($event)"></app-quiz>
+<div>
+    <mat-card class="grid-page">
+        <mat-card-title>Quizes</mat-card-title>
+        <mat-card-actions>
+            <app-top (newClickAction)="onNewClick()" (searchClickAction)="onSearchClick($event)"></app-top>
+            <app-errors class="{{getErrors().length === 0 ? 'hidden' : ''}}" [errors]="getErrors()"></app-errors>
+        </mat-card-actions>
+        <mat-card-content>
+            <mat-table [dataSource]="datasource">
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+                    <mat-cell *matCellDef="let quiz" class="grid-actions">
+                        <a (click)="edit(quiz)" title="edit this item">
+                            <img src="/assets/images/edit.png" alt="edit">
+                        </a>
+                        <a *ngIf="!hasAnswers(quiz)" (click)="delete(quiz)" title="remove this item">
+                            <img src="assets/images/remove.png" alt="remove">
+                        </a>
+                        <a [routerLink]="['/questions/', quiz.id]" title="view questions for this item">
+                            <img src="assets/images/question.png" alt="add questions">
+                        </a>
+                        <a *ngIf="hasQuestions(quiz)" [routerLink]="['/publish/', quiz.id]" title="Publish this quiz and allow users to answer it">
+                            <img src="assets/images/send.png" alt="publish">
+                        </a>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                    <mat-cell *matCellDef="let quiz">{{quiz.name}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                    <mat-cell *matCellDef="let quiz">{{quiz.description}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="qtdQuestions">
+                    <mat-header-cell *matHeaderCellDef>Quantity of Questions</mat-header-cell>
+                    <mat-cell *matCellDef="let quiz">{{quiz.qtdQuestions}}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="qtdAnswers">
+                    <mat-header-cell *matHeaderCellDef>Quantity of Answers</mat-header-cell>
+                    <mat-cell *matCellDef="let quiz">{{quiz.qtdAnswers}}</mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            </mat-table>
+        </mat-card-content>
+    </mat-card>
+</div>
