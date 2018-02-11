@@ -1,58 +1,13 @@
-<mat-card>
+<mat-card class="col-60 center">
     <mat-card-title>
-        {{getQuiz().name}}
+        Question {{getNumber()}}
     </mat-card-title>
-    <mat-card-content>
+    <mat-card-content class="question-description">
         <div>
-            {{getQuiz().description}}
+            {{getQuestion().description}}
         </div>
-        <div class="question-nav">
-            <div class="back-arrow">
-                <a href="javascript:void(0);" (click)="previousQuestion()" title="click to go to the next question">
-                    <img src="/assets/images/left-arrow.png" alt='right arrow'>
-                </a>
-            </div>
-            <div class="question-tracker">
-                <ul>
-                    <li *ngFor="let quest of getQuestions(); let i = index">
-                        <a href="javascript:void(0);" (click)="goToQuestion(i)" title="Question number {{i + 1}}"><span class="question-tracker-number {{classSelected(i)}}">{{i + 1}}</span></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="next-arrow">
-                <a href="javascript:void(0);" (click)="nextQuestion()" title="click to go to the next question">
-                    <img src="/assets/images/right-arrow.png" alt='right arrow'>
-                </a>
-            </div>
+        <div class="answers">
+            <answer-host></answer-host>
         </div>
-        <mat-card class="col-60 center">
-            <mat-card-title>
-                Question {{getCurrentQuestionNumber()}}
-            </mat-card-title>
-            <mat-card-content class="question-description">
-                <div>
-                    {{getCurrentQuestion().description}}
-                </div>
-                <div class="answers">
-                    <answer-host></answer-host>
-                </div>
-            </mat-card-content>
-        </mat-card>
     </mat-card-content>
 </mat-card>
-<div *ngIf="finished()" class="editor {{finished() ? 'show' : 'hidden'}}">
-    <mat-card class="center col-60">
-        <mat-card-title>
-            Are you done?
-        </mat-card-title>
-        <mat-card-content>
-            If you have finished all the answers and want to submit the quiz click in Finish, but, if you prefer review the questions or go back later, click in Not Now.
-        </mat-card-content>
-        <mat-card-actions>
-            <div class="action-control">
-                <button mat-button class="btn-action" (click)="finishQuiz()">Finish Now</button>
-                <button mat-button class="btn-action btn-warn" (click)="cancel()">Not Now</button>
-            </div>
-        </mat-card-actions>
-    </mat-card>
-</div>

@@ -66,7 +66,7 @@ namespace QuizAPI.Repository
 
         public Quiz GetQuizWithAnswers(int id)
         {
-            return DB.Quizes.Include("Answers").Include("Creator").FirstOrDefault(r => r.Id == id);
+            return DB.Quizes.Include("Answers.User").Include("Creator").FirstOrDefault(r => r.Id == id);
         }
 
         public List<Quiz> GetQuizes(string searchValue = null)

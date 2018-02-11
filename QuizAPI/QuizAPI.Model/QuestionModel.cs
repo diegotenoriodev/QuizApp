@@ -78,18 +78,21 @@ namespace QuizAPI.Model
         /// <summary>
         /// Returns a list of options, but considering the user that is taking the quiz.
         /// </summary>
-        /// <param name="idQuiz"></param>
+        /// <param name="idAnswer"></param>
         /// <param name="idQuestion"></param>
         /// <returns></returns>
-        public List<ListItem> GetListOptions(int idQuiz, int idQuestion)
+        public List<ListItem> GetListOptions(int idAnswer, int idQuestion)
         {
             using (IRepository repository = Repository.Repository.CreateRepository())
             {
-                var answer = repository.GetAnswer(idQuiz, currentUserId);
+                var answer = repository.GetAnswer(idAnswer);
 
-                if (answer != null && answer.IsOpen && !answer.Evaluated)
+                if (answer != null)
                 {
-                    return GetMultipleChoiceFromQuestion(repository, answer, idQuestion);
+                    if (answer.User.Id == currentUserId || answer.Quiz.Creator.Id == currentUserId)
+                    {
+                        return GetMultipleChoiceFromQuestion(repository, answer, idQuestion);
+                    }
                 }
             }
 

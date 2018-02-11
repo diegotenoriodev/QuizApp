@@ -13172,11 +13172,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\diego\\Documents\\GitHub\\QuizApp\\QuizAPI\\QuizAPI\\QuizAPI.csproj",
+      "projectUniqueName": "C:\\Users\\diego\\OneDrive\\Career Path\\Portfolio\\QuizApp\\QuizAPI\\QuizAPI\\QuizAPI.csproj",
       "projectName": "QuizAPI",
-      "projectPath": "C:\\Users\\diego\\Documents\\GitHub\\QuizApp\\QuizAPI\\QuizAPI\\QuizAPI.csproj",
+      "projectPath": "C:\\Users\\diego\\OneDrive\\Career Path\\Portfolio\\QuizApp\\QuizAPI\\QuizAPI\\QuizAPI.csproj",
       "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\diego\\Documents\\GitHub\\QuizApp\\QuizAPI\\QuizAPI\\obj\\",
+      "outputPath": "C:\\Users\\diego\\OneDrive\\Career Path\\Portfolio\\QuizApp\\QuizAPI\\QuizAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -13197,11 +13197,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "C:\\Users\\diego\\Documents\\GitHub\\QuizApp\\QuizAPI\\QuizAPI.Domain\\QuizAPI.Domain.csproj": {
-              "projectPath": "C:\\Users\\diego\\Documents\\GitHub\\QuizApp\\QuizAPI\\QuizAPI.Domain\\QuizAPI.Domain.csproj"
+            "C:\\Users\\diego\\OneDrive\\Career Path\\Portfolio\\QuizApp\\QuizAPI\\QuizAPI.Domain\\QuizAPI.Domain.csproj": {
+              "projectPath": "C:\\Users\\diego\\OneDrive\\Career Path\\Portfolio\\QuizApp\\QuizAPI\\QuizAPI.Domain\\QuizAPI.Domain.csproj"
             },
-            "C:\\Users\\diego\\Documents\\GitHub\\QuizApp\\QuizAPI\\QuizAPI.Model\\QuizAPI.Model.csproj": {
-              "projectPath": "C:\\Users\\diego\\Documents\\GitHub\\QuizApp\\QuizAPI\\QuizAPI.Model\\QuizAPI.Model.csproj"
+            "C:\\Users\\diego\\OneDrive\\Career Path\\Portfolio\\QuizApp\\QuizAPI\\QuizAPI.Model\\QuizAPI.Model.csproj": {
+              "projectPath": "C:\\Users\\diego\\OneDrive\\Career Path\\Portfolio\\QuizApp\\QuizAPI\\QuizAPI.Model\\QuizAPI.Model.csproj"
             }
           }
         }

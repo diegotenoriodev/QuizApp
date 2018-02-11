@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { OperationHandler, ResultOperation } from '../model/core.component';
 
 export abstract class BaseService {
-    protected url = 'localhost:4000/quizapp/api/';
+    protected url = 'http://localhost:63133/api/';
 
     protected post(url, obj, handler: OperationHandler) {
         this.http.post(url, obj).subscribe(

@@ -1,69 +1,43 @@
 import { Component, ViewChild, Input, ComponentFactoryResolver } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PublishedQuiz, Quiz, Question, ResultOperation } from '../../model/core.component';
-import { IReportItem } from './controls/baseansweritem.component';
 import { AnswerDirective } from '../../answertype/baseanswer.component';
 import { APIService } from '../../services/api.service';
-import { OpenEndedReportComponent } from './controls/openended.component';
-import { MultipleChoiceReportComponent } from './controls/multiplechoiceanswer.component';
-import { TrueOrFalseReportComponent } from './controls/trueorfalseanswer.component';
+import { BaseAnswerComponent } from '../controls/baseanswer.component';
 
 @Component({
     selector: 'app-answerreport',
     templateUrl: 'answer.component.html'
 })
-export class AnswerReportComponent {
-    private currentAnswerItem: IReportItem;
-    private _question: Question;
+export class AnswerReportComponent extends BaseAnswerComponent {
+    @ViewChild(AnswerDirective) private answerHost: AnswerDirective;
 
-    @Input() idAnswer: number;
-    @Input() index: number;
-    @Input() idQuiz: number;
-
-    @Input() set question(quest: Question) {
-        console.log(quest);
-        this._question = quest;
-        this.loadNewAnswer();
+    @Input() set idQuiz(value: number) { this._idQuiz = value; }
+    @Input() set idAnswer(value: number) { this._idAnswer = value; }
+    @Input() set number(value: number) { this._number = value; }
+    @Input() set question(value: Question) {
+        this._question = value;
+    }
+    @Input() set componentType(type) {
+        super.loadAnswerComponent(type);
     }
 
-    @ViewChild(AnswerDirective) answerHost: AnswerDirective;
-
-    getQuestionNumber() {
-        return this.index + 1;
+    protected getIsReadOnly(): boolean {
+        return true;
     }
 
-    getQuestion() {
-        return this._question;
+    protected getApiService(): APIService {
+        return this.apiService;
     }
 
-    private loadNewAnswer() {
-        const viewContainerRef = this.answerHost.viewContainerRef;
-        viewContainerRef.clear();
-        this.currentAnswerItem = null;
-        let type = null;
-
-        switch (this.getQuestion().questionType) {
-            case 1: // TrueFalse_Question
-                type = TrueOrFalseReportComponent;
-            break;
-            case 2: // Multiple_Choice
-                type = MultipleChoiceReportComponent;
-            break;
-            case 3: // Open_Ended
-                type = OpenEndedReportComponent;
-            break;
-        }
-
-        if (type != null) {
-            const componentFactory = this.componentFactoryResolver.resolveComponentFactory(type);
-            const componentRef = viewContainerRef.createComponent(componentFactory);
-            this.currentAnswerItem = componentRef.instance as IReportItem;
-
-            this.currentAnswerItem.quizId = this.idQuiz;
-            this.currentAnswerItem.apiService = this.apiService;
-            this.currentAnswerItem.load(this.idAnswer as number, this.getQuestion());
-        }
+    protected getComponentFactoryResolver(): ComponentFactoryResolver {
+        return this.componentFactoryResolver;
     }
 
-    constructor(private apiService: APIService, private componentFactoryResolver: ComponentFactoryResolver) { }
+    protected getAnswerDirective(): AnswerDirective {
+        return this.answerHost;
+    }
+
+    constructor(private apiService: APIService,
+        private componentFactoryResolver: ComponentFactoryResolver) { super(); }
 }

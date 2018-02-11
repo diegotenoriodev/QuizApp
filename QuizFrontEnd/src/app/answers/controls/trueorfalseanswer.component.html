@@ -1,0 +1,7 @@
+<div class="answer-desc">
+    The above stated fact is:
+</div>
+<mat-radio-group [(ngModel)]="option" disabled="{{readOnly}}" placeholder="The statement is: " name="radioOption{{getQuestionId()}}">
+    <mat-radio-button value="1">True</mat-radio-button>
+    <mat-radio-button value="0">False</mat-radio-button>
+</mat-radio-group>

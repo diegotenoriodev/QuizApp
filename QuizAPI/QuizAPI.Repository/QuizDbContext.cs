@@ -39,7 +39,7 @@ namespace QuizAPI.Repository
         public QuizDbContext()
         {
             //this.connectionString = "";
-            //this.connectionString = "Data Source=LAPTOP-1DME2FQQ\\SQLDIEGO;Database=QuizAPIDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            this.connectionString = "Data Source=LAPTOP-1DME2FQQ\\SQLDIEGO;Database=QuizAPIDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

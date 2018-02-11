@@ -1,168 +1,54 @@
-import { Component, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, Input, ViewChild, ComponentFactoryResolver } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PublishedQuiz, Quiz, Question, ResultOperation } from '../../model/core.component';
-import { IAnswerItem } from './controls/baseansweritem.component';
 import { AnswerDirective } from '../../answertype/baseanswer.component';
-import { TrueOrFalseAnswerComponent } from './controls/trueorfalseanswer.component';
-import { MultipleChoiceAnswerComponent } from './controls/multiplechoiceanswer.component';
-import { OpenEndedAnswerComponent } from './controls/openended.component';
 import { APIService } from '../../services/api.service';
+import { IAnswerItem } from '../controls/baseanswerOption.component';
+import { BaseAnswerComponent } from '../controls/baseanswer.component';
 
 @Component({
-    selector: 'app-quizanswers',
+    selector: 'app-quizanswer',
     templateUrl: 'answer.component.html'
 })
-export class AnswerComponent {
-    private publishedQuiz: PublishedQuiz;
-    private idAnswer: number;
-    private index: number;
-    private currentAnswerItem: IAnswerItem;
+export class AnswerComponent extends BaseAnswerComponent {
 
-    private _finished = false;
+    @ViewChild(AnswerDirective) private answerHost: AnswerDirective;
 
-    private errors: string[];
-
-    @ViewChild(AnswerDirective) answerHost: AnswerDirective;
-
-    finished() {
-        return this._finished;
+    set currentAnswerItem(answerItem: IAnswerItem) {
+        this._currentAnswerItem = answerItem;
     }
 
-    getQuiz() {
-        if (this.publishedQuiz != null) {
-            return this.publishedQuiz.quiz;
-        }
-        return new Quiz();
+    protected getIsReadOnly(): boolean {
+        return false;
     }
 
-    getQuestions() {
-        if (this.publishedQuiz != null) {
-            return this.publishedQuiz.questions;
-        }
-        return [];
+    protected getApiService(): APIService {
+        return this.apiService;
     }
 
-    getCurrentQuestionNumber() {
-        return this.index + 1;
+    protected getComponentFactoryResolver(): ComponentFactoryResolver {
+        return this.componentFactoryResolver;
     }
 
-    getCurrentQuestion() {
-        if (this.publishedQuiz != null) {
-            return this.getQuestions()[this.index];
-        }
-
-        return new Question();
+    protected getAnswerDirective(): AnswerDirective {
+        return this.answerHost;
     }
 
-    classSelected(index) {
-        if (this.index === index) {
-            return 'selected';
-        }
-        return '';
-    }
+    constructor(private apiService: APIService,
+        private componentFactoryResolver: ComponentFactoryResolver) { super(); }
 
-    previousQuestion() {
-        this.saveCurrent();
-
-        if (this.index > 0) {
-            this.index -= 1;
-            this.loadNewAnswer();
-        }
-    }
-
-    nextQuestion() {
-        this.saveCurrent();
-
-        if (this.index < this.getQuestions().length - 1) {
-            this.index += 1;
-            this.loadNewAnswer();
-        } else {
-            this.finishQuest();
-        }
-    }
-
-    goToQuestion(index: number) {
-        this.saveCurrent();
-
-        if (index >= 0 && index <= this.getQuestions().length - 1) {
-            this.index = index;
-        }
-
-        this.loadNewAnswer();
-    }
-
-    cancel() {
-        this._finished = false;
-    }
-
-    finishQuiz() {
-        this.apiService.postFinishQuiz(this.idAnswer).subscribe(res => {
-            const result = res as ResultOperation;
-
-            if (result.success) {
-                window.location.href = 'user/quizes';
-            } else {
-                this.errors = result.errors;
-            }
-        });
-    }
-
-    private saveCurrent() {
-        this.currentAnswerItem.save(res => {
+    public saveCurrent() {
+        this._currentAnswerItem.save(res => {
             console.log(res);
         });
     }
 
-    private loadNewAnswer() {
-        const viewContainerRef = this.answerHost.viewContainerRef;
-        viewContainerRef.clear();
-        this.currentAnswerItem = null;
-        let type = null;
+    public loadNewAnswer(idQuiz, idAnswer, number, question, type) {
+        this._idAnswer = idAnswer;
+        this._idQuiz = idQuiz;
+        this._question = question;
+        this._number = number;
 
-        switch (this.getCurrentQuestion().questionType) {
-            case 1: // TrueFalse_Question
-                type = TrueOrFalseAnswerComponent;
-            break;
-            case 2: // Multiple_Choice
-                type = MultipleChoiceAnswerComponent;
-            break;
-            case 3: // Open_Ended
-                type = OpenEndedAnswerComponent;
-            break;
-        }
-
-        if (type != null) {
-            const componentFactory = this.componentFactoryResolver.resolveComponentFactory(type);
-            const componentRef = viewContainerRef.createComponent(componentFactory);
-            this.currentAnswerItem = componentRef.instance as IAnswerItem;
-
-            this.currentAnswerItem.quizId = this.getQuiz().id;
-            this.currentAnswerItem.apiService = this.apiService;
-            this.currentAnswerItem.load(this.idAnswer as number, this.getCurrentQuestion());
-        }
-    }
-
-    private finishQuest() {
-        this._finished = true;
-    }
-
-    constructor(private apiService: APIService,
-                private router: ActivatedRoute,
-                private componentFactoryResolver: ComponentFactoryResolver) {
-        this.index = 0;
-        this.errors = [];
-    }
-
-    ngOnInit() {
-        const pubId = this.router.snapshot.paramMap.get('pubId');
-
-        if (pubId != null) {
-            this.apiService.getFullQuiz(pubId).subscribe(res => {
-                this.publishedQuiz = res as PublishedQuiz;
-                this.idAnswer = Number(pubId);
-                this.index = 0;
-                this.loadNewAnswer();
-            });
-        }
+        super.loadAnswerComponent(type);
     }
 }

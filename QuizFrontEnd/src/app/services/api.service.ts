@@ -67,8 +67,8 @@ export class APIService extends BaseService {
         return this.http.get(this.getUrlQuiz() + 'published/' + id);
     }
 
-    getFullFinishedQuiz(idQuiz): any {
-        return this.http.get(this.getUrlQuiz() + 'finished/' + idQuiz);
+    getFullFinishedQuiz(idAnswer): any {
+        return this.http.get(this.getUrlQuiz() + 'finished/' + idAnswer);
     }
 
     postFinishQuiz(idAnswer) {
@@ -111,8 +111,8 @@ export class APIService extends BaseService {
         return this.http.get<any[]>(this.getUrlQuestions() + 'options/' + idQuestion);
     }
 
-    getListOptions(quizId: number, questionId: number) {
-        return this.http.get(this.getUrlQuestions() + 'listoptions/' + quizId + '/' + questionId);
+    getListOptions(idAnswer: number, questionId: number) {
+        return this.http.get(this.getUrlQuestions() + 'listoptions/' + idAnswer + '/' + questionId);
     }
 
     getListOptionsAnswer(quizId: number, questionId: number) {
@@ -133,8 +133,8 @@ export class APIService extends BaseService {
     }
 
     // Answers
-    getAnswerForQuestion(quizId: number, questionId: number) {
-        return this.http.get(this.getUrlAnswer() + quizId + '/' + questionId);
+    getAnswerForQuestion(idAnswer: number, questionId: number) {
+        return this.http.get(this.getUrlAnswer() + idAnswer + '/' + questionId);
     }
 
     getAnswerReportForQuestion(idAnswer: number, questionId: number) {

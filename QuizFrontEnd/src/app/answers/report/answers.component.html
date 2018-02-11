@@ -14,7 +14,7 @@
             <app-errors class="{{getErrors().length === 0 ? 'hidden' : ''}}" [errors]="getErrors()"></app-errors>
         </mat-card-actions>
         <div *ngFor="let quest of getQuestions(); let i = index;">
-            <app-answerreport [question]="quest" [idAnswer]="getIdAnswer()" [index]="i" [idQuiz]="getQuiz().id"></app-answerreport>
+            <app-answerreport [number]="i" [question]="quest" [idQuiz]="getQuiz().id" [idAnswer]="getIdAnswer()" [componentType]="getComponentType(quest)"></app-answerreport>
         </div>
     </mat-card-content>
     <mat-card-actions>

@@ -27,6 +27,7 @@ import { QuestionsComponent } from './questions/questions.component';
 import { QuizComponent } from './quizzes/quiz.component';
 import { PublishComponent } from './answers/publish.component';
 import { AnswerComponent } from './answers/quiz/answer.component';
+import { AnswersComponent } from './answers/quiz/answers.component';
 import { GuestComponent } from './guest.component';
 import { LoginComponent } from './user/login.component';
 import { MainComponent } from './main.component';
@@ -36,9 +37,6 @@ import { ErrorsComponent } from './sharedcontrols/errors.component';
 import { TopComponent } from './sharedcontrols/top.component';
 import { UserGridComponent } from './sharedcontrols/usergrid.component';
 import { LoadingComponent } from './sharedcontrols/loading.component';
-import { TrueOrFalseAnswerComponent } from './answers/quiz/controls/trueorfalseanswer.component';
-import { MultipleChoiceAnswerComponent } from './answers/quiz/controls/multiplechoiceanswer.component';
-import { OpenEndedAnswerComponent } from './answers/quiz/controls/openended.component';
 import { APIService } from './services/api.service';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './services/auth.interceptor';
@@ -46,10 +44,10 @@ import { AnswersReportComponent } from './answers/report/answers.component';
 import { AnswerReportComponent } from './answers/report/answer.component';
 import { QuizUserComponent } from './answers/quiz/quizesUser.component';
 import { AnswersUserComponent } from './answers/report/answerUser.component';
-import { OpenEndedReportComponent } from './answers/report/controls/openended.component';
-import { TrueOrFalseReportComponent } from './answers/report/controls/trueorfalseanswer.component';
-import { MultipleChoiceReportComponent } from './answers/report/controls/multiplechoiceanswer.component';
 import { PasswordComponent } from './user/password.component';
+import { TrueOrFalseAnswerComponent } from './answers/controls/trueorfalseanswer.component';
+import { MultipleChoiceAnswerComponent } from './answers/controls/multiplechoiceanswer.component';
+import { OpenEndedAnswerComponent } from './answers/controls/openended.component';
 
 const routes = [
   { path: 'quizes', component: QuizesComponent},
@@ -58,7 +56,7 @@ const routes = [
   { path: 'account', component: PasswordComponent},
   { path: 'publish/:quizId', component: PublishComponent},
   { path: 'user/quizes', component: QuizUserComponent},
-  { path: 'user/quizes/:pubId', component: AnswerComponent},
+  { path: 'user/quizes/:pubId', component: AnswersComponent},
   { path: 'user/answers', component: AnswersUserComponent},
   { path: 'user/answers/:pubId', component: AnswersReportComponent}
 ];
@@ -76,6 +74,7 @@ const routes = [
     QuestionComponent,
     QuizUserComponent,
     AnswerComponent,
+    AnswersComponent,
     ErrorsComponent,
     TopComponent,
     MultipleChoiceComponent,
@@ -90,10 +89,7 @@ const routes = [
     AnswersUserComponent,
     AnswerReportComponent,
     AnswersReportComponent,
-    MultipleChoiceReportComponent,
-    TrueOrFalseReportComponent,
-    PasswordComponent,
-    OpenEndedReportComponent
+    PasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -122,15 +118,13 @@ const routes = [
     }
   ],
   entryComponents: [
+    UserGridComponent,
     MultipleChoiceComponent,
     TrueFalseOptionComponent,
-    UserGridComponent,
     TrueOrFalseAnswerComponent,
     MultipleChoiceAnswerComponent,
-    OpenEndedAnswerComponent,
-    MultipleChoiceReportComponent,
-    TrueOrFalseReportComponent,
-    OpenEndedReportComponent, ],
+    OpenEndedAnswerComponent
+  ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -48,17 +48,17 @@ namespace QuizAPI.Controllers
         }
 
         [HttpGet]
-        [Route("{idQuiz:int}/{idQuestion:int}")]
-        public IActionResult Get(int idQuiz, int idQuestion)
+        [Route("{idAnswer:int}/{idQuestion:int}")]
+        public IActionResult Get(int idAnswer, int idQuestion)
         {
-            return Ok(Model.GetAnswer(idQuiz, idQuestion));
+            return Ok(Model.GetAnswer(idAnswer, idQuestion));
         }
 
         [HttpGet]
-        [Route("report/{idQuiz:int}/{idQuestion:int}")]
-        public IActionResult GetAnswerReport(int idQuiz, int idQuestion)
+        [Route("report/{idAnswer:int}/{idQuestion:int}")]
+        public IActionResult GetAnswerReport(int idAnswer, int idQuestion)
         {
-            return Ok(Model.GetAnswerReport(idQuiz, idQuestion));
+            return Ok(Model.GetAnswerReport(idAnswer, idQuestion));
         }
 
         [HttpPost]

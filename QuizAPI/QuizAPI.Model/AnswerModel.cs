@@ -50,7 +50,7 @@ namespace QuizAPI.Model
                   return true;
               });
         }
-        
+
         /// <summary>
         /// Overload of SaveAnswer in a true or false request.
         /// It will verify if the user is the owner and if the already answer exists.
@@ -218,18 +218,21 @@ namespace QuizAPI.Model
         /// <summary>
         /// Gets a answer for a quiz/question for the logged user.
         /// </summary>
-        /// <param name="idQuiz"></param>
+        /// <param name="idAnswer"></param>
         /// <param name="idQuestion"></param>
         /// <returns></returns>
-        public AnswerModelViewBase GetAnswer(int idQuiz, int idQuestion)
+        public AnswerModelViewBase GetAnswer(int idAnswer, int idQuestion)
         {
             using (IRepository repository = Repository.Repository.CreateRepository())
             {
-                Domain.Answer answer = repository.GetAnswer(idQuiz, userId);
+                Domain.Answer answer = repository.GetAnswer(idAnswer);
 
                 if (answer != null)
                 {
-                    return CreateInfoAnswer(repository, answer, idQuestion);
+                    if (answer.User.Id == userId || answer.Quiz.Creator.Id == userId)
+                    {
+                        return CreateInfoAnswer(repository, answer, idQuestion);
+                    }
                 }
             }
 
@@ -250,7 +253,7 @@ namespace QuizAPI.Model
 
                 if (answer != null)
                 {
-                    if (answer.Quiz.Creator.Id == userId)
+                    if (answer.Quiz.Creator.Id == userId || answer.User.Id == userId)
                     {
                         return CreateInfoAnswer(repository, answer, idQuestion);
                     }

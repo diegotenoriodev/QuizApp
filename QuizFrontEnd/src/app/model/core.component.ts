@@ -5,6 +5,10 @@ export class ListItem {
     name: string;
 }
 
+export class CheckBoxItem extends ListItem {
+    checked: boolean;
+}
+
 export class Quiz {
     id: number;
     name: string;

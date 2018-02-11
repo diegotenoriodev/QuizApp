@@ -85,10 +85,10 @@ namespace QuizAPI.Controllers
         }
 
         [HttpGet]
-        [Route("listoptions/{idQuiz:int}/{idQuestion:int}")]
-        public IActionResult GetListOptions(int idQuiz, int idQuestion)
+        [Route("listoptions/{idAnswer:int}/{idQuestion:int}")]
+        public IActionResult GetListOptions(int idAnswer, int idQuestion)
         {
-            return Ok(Model.GetListOptions(idQuiz, idQuestion));
+            return Ok(Model.GetListOptions(idAnswer, idQuestion));
         }
         [HttpGet]
         [Route("listoptionsanswer/{idAnswer:int}/{idQuestion:int}")]

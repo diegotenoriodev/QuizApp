@@ -1,42 +1,16 @@
-import { Component, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PublishedQuiz, Quiz, Question, ResultOperation } from '../../model/core.component';
-import { AnswerDirective } from '../../answertype/baseanswer.component';
+import { BaseAnswersComponent } from '../controls/baseanswers.component';
 import { APIService } from '../../services/api.service';
+import { PublishedQuiz, ResultOperation } from '../../model/core.component';
 
 @Component({
     selector: 'app-answersreport',
     templateUrl: 'answers.component.html'
 })
-export class AnswersReportComponent {
-    private publishedQuiz: PublishedQuiz;
-    private idAnswer: number;
-    private errors: string[];
-
-    getErrors() {
-        return this.errors;
-    }
-
-    getIdAnswer() {
-        return this.idAnswer;
-    }
-
-    getQuiz() {
-        if (this.publishedQuiz != null) {
-            return this.publishedQuiz.quiz;
-        }
-        return new Quiz();
-    }
-
-    getQuestions() {
-        if (this.publishedQuiz != null) {
-            return this.publishedQuiz.questions;
-        }
-        return [];
-    }
-
-    constructor(private apiService: APIService, private router: ActivatedRoute) { 
-        this.errors = [];
+export class AnswersReportComponent extends BaseAnswersComponent {
+    constructor(private apiService: APIService, private router: ActivatedRoute) {
+        super();
     }
 
     ngOnInit() {
@@ -51,7 +25,6 @@ export class AnswersReportComponent {
     }
 
     evaluate() {
-        console.log('evaluating..');
         this.apiService.postEvaluateQuiz(this.idAnswer).subscribe(res => {
             console.log(res);
             if (res != null) {
